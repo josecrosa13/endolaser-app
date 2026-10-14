@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2e3a5e">
+<title>Endolaser — Treino</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="topbar">
+  <div class="brand">Endolaser<span>• Treino</span></div>
+  <div class="stats">
+    <span class="stat" title="Ofensiva">🔥 <b id="s-streak">0</b></span>
+    <span class="stat" title="XP">⭐ <b id="s-xp">0</b></span>
+  </div>
+</header>
+
+<!-- HOME / TRILHA -->
+<main id="home" class="screen">
+  <div class="goal">
+    <div class="goal-ring"><svg viewBox="0 0 36 36"><path class="bg" d="M18 2a16 16 0 1 1 0 32 16 16 0 0 1 0-32"/><path id="goalpath" class="fg" d="M18 2a16 16 0 1 1 0 32 16 16 0 0 1 0-32"/></svg><span id="goalpct">0%</span></div>
+    <div class="goal-txt"><b>Meta diária</b><small id="goaltxt">0 / 30 XP hoje</small></div>
+  </div>
+  <div id="trilha"></div>
+  <div class="row2">
+    <button class="big ghost" onclick="openFlash()">🃏 Flashcards</button>
+    <button class="big ghost" onclick="show('progress'); renderProgress()">📊 Progresso</button>
+  </div>
+  <p class="tiny">Conteúdo educacional baseado no método do Dr. José Rosa. Fins de estudo — não substitui avaliação médica.</p>
+</main>
+
+<!-- LESSON -->
+<main id="lesson" class="screen hidden">
+  <div class="lhead">
+    <button class="x" onclick="quitLesson()">✕</button>
+    <div class="pbar"><i id="pbar"></i></div>
+    <span class="hearts" id="hearts"></span>
+  </div>
+  <div id="qbox">
+    <h2 id="q-title"></h2>
+    <div id="q-opts"></div>
+  </div>
+  <div id="feedback" class="feedback hidden">
+    <div id="fb-title"></div>
+    <div id="fb-exp"></div>
+  </div>
+  <button id="checkbtn" class="big" disabled onclick="checkAnswer()">Verificar</button>
+</main>
+
+<!-- RESULT -->
+<main id="result" class="screen hidden">
+  <div class="result-card">
+    <div class="big-emoji" id="r-emoji">🎉</div>
+    <h2 id="r-title">Lição concluída!</h2>
+    <div class="r-stats">
+      <div><b id="r-xp">+0</b><small>XP</small></div>
+      <div><b id="r-acc">0%</b><small>Acertos</small></div>
+    </div>
+    <button class="big" onclick="show('home'); renderHome()">Continuar</button>
+  </div>
+</main>
+
+<!-- FLASHCARDS -->
+<main id="flash" class="screen hidden">
+  <div class="lhead"><button class="x" onclick="show('home'); renderHome()">✕</button><div class="pbar"><i id="fpbar"></i></div><span class="stat">🃏 <b id="fcount">0</b></span></div>
+  <div id="card" class="flashcard" onclick="flipCard()">
+    <div class="fc-inner">
+      <div class="fc-front"><span id="fc-term"></span><small>toque para ver</small></div>
+      <div class="fc-back"><span id="fc-def"></span></div>
+    </div>
+  </div>
+  <div id="frate" class="frate hidden">
+    <button class="rate again" onclick="rateCard(0)">Errei / revisar</button>
+    <button class="rate good" onclick="rateCard(1)">Acertei 👍</button>
+  </div>
+  <div id="fdone" class="hidden result-card"><div class="big-emoji">✅</div><h2>Revisão em dia!</h2><button class="big" onclick="show('home'); renderHome()">Voltar</button></div>
+</main>
+
+<!-- PROGRESS -->
+<main id="progress" class="screen hidden">
+  <div class="lhead"><button class="x" onclick="show('home'); renderHome()">✕</button><b>Seu progresso</b><span></span></div>
+  <div class="prow"><span>⭐ XP total</span><b id="p-xp">0</b></div>
+  <div class="prow"><span>🔥 Ofensiva</span><b id="p-streak">0 dias</b></div>
+  <div class="prow"><span>🎯 Acerto geral</span><b id="p-acc">—</b></div>
+  <h3>Por lição</h3>
+  <div id="p-lessons"></div>
+  <button class="big ghost danger" onclick="resetAll()">Zerar progresso</button>
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

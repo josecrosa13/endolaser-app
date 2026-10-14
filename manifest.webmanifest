@@ -1,0 +1,14 @@
+{
+  "name": "Endolaser — Treino",
+  "short_name": "Endolaser",
+  "description": "Treino gamificado sobre endolaser (Método Sem Varizes).",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#2e3a5e",
+  "theme_color": "#2e3a5e",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
